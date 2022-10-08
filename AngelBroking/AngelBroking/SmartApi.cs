@@ -180,7 +180,7 @@ namespace AngelBroking
         }
 
         /*User Calls*/
-        public OutputBaseClass GenerateSession(string clientcode, string password)
+        public OutputBaseClass GenerateSession(string clientcode, string password, string totp)
         {
             OutputBaseClass res = new OutputBaseClass();
             res.status = true;
@@ -191,7 +191,7 @@ namespace AngelBroking
 
                 string URL = APIURL + "/rest/auth/angelbroking/user/v1/loginByPassword";
 
-                string PostData = "{\"clientcode\":\"" + clientcode + "\",\"password\":\"" + password + "\"}";
+                string PostData = "{\"clientcode\":\"" + clientcode + "\",\"password\":\"" + password + "\",\"totp\":\"" + totp + "\"}";
 
                 string json = POSTWebRequest(null, URL, PostData);
                 if (!json.Contains("PostError:"))
